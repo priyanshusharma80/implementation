@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class SuperClass{
+    public: 
+        int superVar=5;
+
+    SuperClass(){
+        cout<<"SuperClass"<<endl;
+    }
+
+    void display(){
+        cout<<superVar<<endl;
+    }
+};
+
+// Single Inheritance
+
+class child1: public SuperClass{
+    public:
+        int child1Var=6;
+
+    child1(){
+        cout<<"Child1"<<endl;
+    }
+
+    void display(){
+        cout<<superVar<<" "<<child1Var<<endl;
+    }
+};
+
+// multilevel Inheritance
+
+class child2:public child1{
+    public: 
+        int child2Var = 7;
+
+    child2(){
+        cout<<"Child2"<<endl;
+    }
+
+    void display(){
+        cout<<superVar<<" "<<child1Var<<" "<<child2Var<<endl;
+    }
+};
+
+int main(){
+    SuperClass obj;
+    cout<<"-------------------"<<endl;
+    child1 obj1;
+    cout<<"-------------------"<<endl;
+    child2 obj2;
+    // obj.display();
+    // obj1.display();
+    // obj2.display();
+    return 0;
+}
+
+
+Output: 
+
+SuperClass
+-------------------
+SuperClass
+Child1
+-------------------
+SuperClass
+Child1
+Child2
