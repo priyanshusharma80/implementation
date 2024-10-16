@@ -1,0 +1,47 @@
+## Implement BST
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class TreeNode{
+    public:
+        int val;
+        TreeNode* left,*right;
+
+    TreeNode(int val){
+        this->val = val;
+        this->left = NULL;
+        this->right=NULL;
+    }
+};
+
+TreeNode* constructBST(TreeNode* root, int element){
+    if(root==NULL){
+        TreeNode* temp = new TreeNode(element);
+        return temp;
+    }
+
+    if(root->val>element) root->left = constructBST(root->left,element);
+    else root->right = constructBST(root->right,element);
+
+    return root;
+}
+
+void inorder(TreeNode* root){
+    if(root==NULL) return ;
+    inorder(root->left);
+    cout<<root->val<<" ";
+    inorder(root->right);
+}
+
+int main(){
+    vector<int> arr = {3,6,2,5,7,8};
+    TreeNode* root  = NULL;
+    for(int i=0;i<6;i++){
+        root = constructBST(root,arr[i]);
+    }
+
+    inorder(root);
+    return 0;
+}
