@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+// Compile Time Polymorphism
+class Super{
+    public:
+
+    int add(int a,int b){
+        return a+b;
+    }
+
+    int add(int a,int b,int c){
+        return a+b+c;
+    }
+};
+
+
+// Run time Polymorphism
+
+class child: public Super{
+    public: 
+        using Super::add;
+
+        int add(int a,int b){
+            return a-b;
+        }
+
+        // int add(int a,int b,int c){
+        //     return a-b-c;
+        // }
+};
+
+
+
+int main(){
+    // Super obj;           13 21
+    child obj;
+    cout<<obj.add(3,4,6)<<endl;
+    cout<<obj.add(6,5)<<endl;
+    return 0;
+}
